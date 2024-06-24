@@ -1,0 +1,14 @@
+  
+          <div class="p-6 text-gray-900 dark:text-gray-100">
+            <form id="form-register" method="POST">
+              {% csrf_token %}
+              <table>
+                {{ form.as_table }}
+              </table>
+              <div class="text-center my-4">
+                <button class="btn btn-primary" id="btn-save-client" type="submit">Guardar</button>
+              </div>
+            </form>
+
+          </div>
+    

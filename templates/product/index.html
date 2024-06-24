@@ -1,0 +1,124 @@
+
+{% extends 'layouts/app.html' %} 
+{% load static %}
+{% block 'title' %} Editar contacto {% endblock %} 
+
+{% block 'styles'%} 
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/form.css' %}" />
+{% endblock %} 
+
+{% block 'content' %}
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="alert-success"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    <h1 class="titulo-productos">Productos</h1>
+
+
+    <a href="#">Nuevo producto</a>
+
+    <div class="row">
+      <div class="col-md-6 order-md-2">
+
+        <div id="edit-product">
+          
+
+          <form id="form" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <div class="comprar__img">
+              <img id="img" class="fondo" src="" alt="" />
+            </div>
+            
+            <div>
+              <label for="img">Cambiar imagen</label>
+              <input id="file-img" type="file" name="image_path"  accept="image/*">
+            </div>
+
+            <div>
+              <label for="name">Nombre</label>
+              <input id="name" type="text" placeholder="Nombre" required name="name">
+            </div>
+
+            <div>
+              <label for="description">Descripción</label>
+              <input id="description" type="text" placeholder="Descripción" required name="description">
+            </div>
+
+            <div>
+              <label for="price">Precio</label>
+              <input id="price" type="text" placeholder="$ Precio" required name="price">
+            </div>
+
+            <button id="btn-save" type="submit">Guardar cambios</button>
+
+          </form>
+      
+        </div>
+
+        <div id="new-product">
+          <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <table>
+                {{ form.as_table }}
+            </table>
+            <button type="submit">Save</button>
+    
+          </form>
+        </div>
+      </div>
+      <div class="col-md-6">
+        
+        <div >
+          <table>
+            <tr>
+              <th>
+                ID
+              </th>
+              <th>
+                Nombre
+              </th>
+              <th>
+                Precio
+              </th>
+            </tr>
+            {% for product in products %}
+            <tr  >
+              <th onClick="getId({{product.id}})">
+                {{product.id}}
+              </th>
+              <th onClick="getId({{product.id}})">
+                {{product.name}}
+              </th>
+              <th onClick="getId({{product.id}})">
+                {{product.price}}
+              </th>
+              <th>
+                <form action="{% url 'product_delete' id=product.id %}" method="POST">
+                  {% csrf_token %}
+                  <div class="btn btn-primary" onClick="deleteProduct(this)">Eliminar</div>
+                </form>
+              </th>
+            </tr>
+            {% endfor %}
+          </table>
+        </div>
+
+        
+
+      </div>
+      
+    </div>
+
+
+{% endblock %}
+
+{% block 'scripts' %} 
+<script src="{% static 'scripts/index.js' %}"> </script>
+{% endblock %}

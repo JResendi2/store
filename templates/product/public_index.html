@@ -1,0 +1,46 @@
+
+{% extends 'layouts/app.html' %} 
+{% load static %}
+{% block 'title' %} Editar contacto {% endblock %} 
+
+{% block 'styles'%} 
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/form.css' %}" />
+{% endblock %} 
+
+{% block 'content' %}
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="alert-success"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    <h1 class="titulo-productos">Nuestros productos</h1>
+
+    <div class="grid-productos">
+        {% for product in products %}
+        <a href="{% url 'product_view' id=product.id %}">
+            <div class="producto fondo">
+              <div class="producto__img">
+                <img src="storage/{{ product.image_path }}" alt="" />
+              </div>
+              <div class="producto_info">
+                <h4 class="producto__nombre">{{product.name}}</h4>
+                <h4 class="producto__precio">{{product.price}}</h4>
+              </div>
+            </div>
+          </a>
+       
+        {% endfor %}
+    </div>
+
+
+{% endblock %}
+
+
+{% block 'scripts' %} 
+  <script src="{% static 'scripts/public_index.js' %}"> </script>
+{% endblock %}

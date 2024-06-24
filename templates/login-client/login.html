@@ -1,0 +1,20 @@
+
+          <div>
+            <form id="form-register" method="POST">
+              {% csrf_token %}
+              <div class="d-flex justify-content-center">
+              <table>
+                
+                  {{ form.as_table }}
+                
+              </table>
+            </div>
+              <div class="text-center my-4">
+                <button class="btn btn-primary" id="btn-login-client">Iniciar sesion</button>
+              </div>
+            </form>
+            <div class="text-center mb-2">
+              <a class id="btn-register" href="#">Registrarse</a>
+            </div>
+          </div>
+              

@@ -1,0 +1,82 @@
+{% extends 'layouts/app.html' %} 
+{% block 'title' %} Editar contacto {% endblock %} 
+
+{% block 'styles'%} 
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/form.css' %}" />
+    <style>
+      tr{
+        display: flex;
+        margin-bottom: 2rem;
+      }
+      th label{
+        width: 16rem;
+      }
+      td, input{
+        width: 100%;
+      }
+    </style>
+{% endblock %} 
+
+{% block 'content' %}
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="alert-success"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    <h1 class="titulo-producto">{{product.name}}</h1>
+
+      <div class="comprar">
+        <div class="comprar__img">
+          <img class="fondo" src="/storage/{{ product.image_path }}" alt="" />
+        </div>
+
+        <p class="comprar__info  fondo">{{product.description}}</p>
+
+        <div class="comprar__form">
+          <form action="">
+
+            <div class="grid-form">
+
+              <select class="form__talla" name="" id="">
+                <option selected disabled value="">Selecciona una talla</option>
+                <option value="">2</option>
+                <option value="">3</option>
+              </select>
+
+              <input type="number" min="1" class="form__cantidad" placeholder="Cantidad">
+
+              <button id="btn-add-product" type="submit" class="form__boton">Agregar al carrito</button>
+
+            </div>
+          </form>
+        </div>
+      </div>
+
+
+      <div class="modal" id="modal-register" tabindex="-1" role="dialog">
+        <div class="modal-dialog " role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Inicia sessión para guardar tu compra en el carrito</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            {% csrf_token %}
+            <div class="modal-body">
+
+              
+            </div>
+          </div>
+        </div>
+      </div>
+{% endblock %}
+
+{% block 'scripts' %} 
+<script src="{% static 'scripts/public_index.js' %}"> </script>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'layouts/app.html' %} 
+{% block 'title' %} Editar contacto {% endblock %} 
+
+{% block 'styles'%} 
+    {% load static %}
+{% endblock %} 
+
+{% block 'content' %}
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="alert-success"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    {% comment %} <span class="aux-btns-form"><a href="{% url 'contact' %}">Volver atrás</a></span> {% endcomment %}
+    
+{% endblock %}

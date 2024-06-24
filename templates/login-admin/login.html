@@ -1,0 +1,41 @@
+{% extends 'layouts/app-login.html' %} 
+{% block 'title' %} Editar contacto {% endblock %} 
+
+{% block 'styles'%} 
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/form.css' %}" />
+    <style>
+      tr{
+        display: flex;
+        margin-bottom: 2rem;
+      }
+      th label{
+        width: 16rem;
+      }
+      td, input{
+        width: 100%;
+      }
+    </style>
+{% endblock %} 
+
+{% block 'content' %}
+<div class="mt-5">
+<form method="POST" autocomplete="off">
+  {% csrf_token %}
+  <table>
+    {{ form.as_table }}
+  </table>
+  <div class="d-flex justify-content-end gap-4 align-items-center">
+    <a class="text-dark" href="{% url 'login_up'%}">Registrarse</a>
+
+    <button class="btn btn-primary" type="submit">Iniciar sesion</button>
+  </div>
+</form>
+</div>
+
+{% endblock %}
+
+{% block 'scripts' %} 
+<script src="{% static 'scripts/public_index.js' %}"> </script>
+{% endblock %}

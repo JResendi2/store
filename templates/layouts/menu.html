@@ -1,0 +1,23 @@
+{% load static %}
+<header class="header">
+  <div>
+    <img src="{% static 'imgs/logo.png' %}" alt="" />
+  </div>
+  <div>
+    <div class="header-login">
+    {% if user.is_authenticated %}
+            <form id="logout-form" action="{% url 'logout' %}" method="post">
+                {% csrf_token %}
+                <button class="btn btn-login" type="submit">Cerrar sesión</button>
+            </form>
+
+        {% endif %}
+      </div>
+  </div>
+        
+</header>
+
+<nav class="nav">
+  <a href="{% url 'product_public_index' %}"><h4 class="nav__enlace nav__enlace--seleccionado">Tienda</h4></a >
+  <a href="{% url 'product_public_nosotros' %}"><h4 class="nav__enlace">Nosotros</h4></a>
+</nav>

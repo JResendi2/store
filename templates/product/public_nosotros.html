@@ -1,0 +1,90 @@
+
+{% extends 'layouts/app.html' %} 
+{% load static %}
+{% block 'title' %} Editar contacto {% endblock %} 
+
+{% block 'styles'%} 
+    
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/form.css' %}" />
+{% endblock %} 
+
+{% block 'content' %}
+<h1 class="titulo-productos">Nosotros</h1>
+
+<div class="nosotros">
+  <div class="nosotros__img fondo">
+    <img src="{% static 'imgs/grafico1.jpg'%}" alt="" />
+  </div>
+
+  <div class="nosotros__info fondo">
+    <p>
+      Nam nec metus a risus auctor congue nec non felis. Donec eu diam
+      facilisis, semper nisl sed, ultricies ligula. Duis convallis tortor
+      eu mi interdum feugiat. Pellentesque diam dolor, dignissim sit amet
+      metus vitae, viverra dapibus odio. Mauris lobortis odio nisi, ut
+      pulvinar nisl accumsan non. Aliquam vitae diam elementum ipsum
+      gravida mattis. Nulla facilisi. Etiam eu urna at arcu dignissim
+      tempor. Vestibulum ultrices ex ante, quis gravida metus vehicula
+      nec. Donec interdum ultricies diam, congue dictum libero auctor
+      quis. Vestibulum ante ipsum primis in faucibus orci luctus et
+      ultrices posuere cubilia curae; Proin porta pretium felis, ac semper
+      nulla pellentesque sed. Morbi condimentum mauris orci. In blandit et
+      dolor vel consequat. Cras urna odio, euismod sit amet mauris a,
+      varius dignissim neque.
+    </p>
+  </div>
+</div>
+
+<h3 class="titulo-productos">¿Porqué comprar con nosotros?</h3>
+
+<div class="grid-servicios">
+  <div class="servicio">
+    <div class="servicio__img fondo" >
+      <img src="{% static 'imgs/icono_1.png' %}" alt="">
+    </div>
+    <h4 class="servicio__nombre">El mejor precio</h4>
+    <p class="servicio__info">
+      Vestibulum ante ipsum primis in faucibus orci luctus et ultrices
+      posuere cubilia curae; Proin porta pretium felis.
+    </p>
+  </div>
+  <div class="servicio">
+    <div class="servicio__img fondo" >
+      <img src="{% static 'imgs/icono_4.png' %}" alt="">
+    </div>
+    <h4 class="servicio__nombre">El mejor precio</h4>
+    <p class="servicio__info">
+      Vestibulum ante ipsum primis in faucibus orci luctus et ultrices
+      posuere cubilia curae; Proin porta pretium felis.
+    </p>
+  </div>
+  <div class="servicio">
+    <div class="servicio__img fondo" >
+      <img src="{% static 'imgs/icono_3.png' %}" alt="">
+    </div>
+    <h4 class="servicio__nombre">El mejor precio</h4>
+    <p class="servicio__info">
+      Vestibulum ante ipsum primis in faucibus orci luctus et ultrices
+      posuere cubilia curae; Proin porta pretium felis.
+    </p>
+  </div>
+  <div class="servicio">
+    <div class="servicio__img fondo" >
+      <img src="{% static 'imgs/icono_2.png' %}" alt="">
+    </div>
+    <h4 class="servicio__nombre">El mejor precio</h4>
+    <p class="servicio__info">
+      Vestibulum ante ipsum primis in faucibus orci luctus et ultrices
+      posuere cubilia curae; Proin porta pretium felis.
+    </p>
+  </div>
+</div>
+</div>
+
+{% endblock %}
+
+
+{% block 'scripts' %} 
+  <script src="{% static 'scripts/public_index.js' %}"> </script>
+{% endblock %}
