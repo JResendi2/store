@@ -12,7 +12,7 @@ def public_nosotros(request):
     return render(request, 'product/public_nosotros.html', {})
 
 @login_required
-@permission_required('products.change_products', login_url='/')
+@permission_required('products.change_product', login_url='/')
 def index(request):
     products = Product.objects.all()
     form = ProductForm()

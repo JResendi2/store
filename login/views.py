@@ -36,7 +36,7 @@ def login_up(request):
             password = form.cleaned_data.get('password1')
              
             user = User.objects.get(username=username)
-            permission = Permission.objects.get(codename='change_products')
+            permission = Permission.objects.get(codename='change_product')
             user.user_permissions.add(permission)
             
             user_authenticate = authenticate(username=username, password=password)
