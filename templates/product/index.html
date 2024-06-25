@@ -18,17 +18,16 @@
     </ul>
     {% endif %}
 
-    <h1 class="titulo-productos">Productos</h1>
 
 
-    <a href="#">Nuevo producto</a>
+    <a id="btn-add" class="btn btn-warning fw-bold my-5" href="#">Nuevo producto</a>
 
     <div class="row">
       <div class="col-md-6 order-md-2">
 
-        <div id="edit-product">
+        <div id="edit-product" class="d-none">
           
-
+          <h3 class="mb-4">Editar el producto</h3>
           <form id="form" method="post" enctype="multipart/form-data">
             {% csrf_token %}
 
@@ -36,48 +35,55 @@
               <img id="img" class="fondo" src="" alt="" />
             </div>
             
-            <div>
-              <label for="img">Cambiar imagen</label>
-              <input id="file-img" type="file" name="image_path"  accept="image/*">
+            <div class="mb-1 mt-4">
+              <label class="label" for="img">Cambiar imagen:</label>
+              <input class="input" id="file-img" type="file" name="image_path"  accept="image/*">
             </div>
 
-            <div>
-              <label for="name">Nombre</label>
-              <input id="name" type="text" placeholder="Nombre" required name="name">
+            <div class="mb-1">
+              <label class="label" for="name">Nombre:</label>
+              <input class="input" id="name" type="text" placeholder="Nombre" required name="name">
             </div>
 
-            <div>
-              <label for="description">Descripción</label>
-              <input id="description" type="text" placeholder="Descripción" required name="description">
+            <div class="mb-1">
+              <label class="label" for="description">Descripción:</label>
+              <input class="input" id="description" type="text" placeholder="Descripción" required name="description">
             </div>
 
-            <div>
-              <label for="price">Precio</label>
-              <input id="price" type="text" placeholder="$ Precio" required name="price">
+            <div class="mb-1">
+              <label class="label" for="price">Precio:</label>
+              <input class="input" id="price" type="text" placeholder="$ Precio" required name="price">
             </div>
 
-            <button id="btn-save" type="submit">Guardar cambios</button>
+            <div class="d-flex justify-content-end mt-4">
+              <button class="btn btn-primary" id="btn-update" type="submit">Guardar cambios</button>
+            </div>
 
           </form>
       
         </div>
 
-        <div id="new-product">
-          <form method="POST" enctype="multipart/form-data">
+        <div id="new-product" class="d-none">
+          <h3 class="mb-4">Nuevo el producto</h3>
+
+          <form id="form-new" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             <table>
                 {{ form.as_table }}
             </table>
-            <button type="submit">Save</button>
-    
+            <div class="d-flex justify-content-end mt-4">
+              <button class="btn btn-primary" id="btn-save" type="submit">Save</button>
+            </div>
           </form>
         </div>
       </div>
       <div class="col-md-6">
         
-        <div >
-          <table>
-            <tr>
+        <div>
+          <h3 class="mb-4">Productos</h3>
+
+          <table class="w-100" >
+            <tr class="table-head">
               <th>
                 ID
               </th>
@@ -87,22 +93,23 @@
               <th>
                 Precio
               </th>
+              <th></th>
             </tr>
             {% for product in products %}
-            <tr  >
-              <th onClick="getId({{product.id}})">
+            <tr class="table-tr">
+              <th class="th-info" onClick="getId({{product.id}})">
                 {{product.id}}
               </th>
-              <th onClick="getId({{product.id}})">
+              <th class="th-info" onClick="getId({{product.id}})">
                 {{product.name}}
               </th>
-              <th onClick="getId({{product.id}})">
+              <th class="th-info" onClick="getId({{product.id}})">
                 {{product.price}}
               </th>
               <th>
                 <form action="{% url 'product_delete' id=product.id %}" method="POST">
                   {% csrf_token %}
-                  <div class="btn btn-primary" onClick="deleteProduct(this)">Eliminar</div>
+                  <div class="btn btn-danger" onClick="deleteProduct(this)">Eliminar</div>
                 </form>
               </th>
             </tr>

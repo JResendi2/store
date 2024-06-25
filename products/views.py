@@ -24,9 +24,8 @@ def create(request):
         form = ProductForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-    else:
-        form = ProductForm()
-    return render(request, 'product/create.html', {"form": form})
+            return JsonResponse({'status':200}) 
+        return JsonResponse({'status':"error"})
 
 def view(request, id):
     product = Product.objects.get(id=id)

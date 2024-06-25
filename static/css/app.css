@@ -1,6 +1,7 @@
 :root {
     --primario: #660ef2;
     --secundario: #ffb100;
+    --color-primario-dark: #89119D;
     --fuente:    'Roboto', sans-serif;
 }
 body{
@@ -45,8 +46,30 @@ body{
     padding: 2rem;
 }
 
-.footer{
-    position: absolute;
-    bottom: 0;
-    width: 100%;
+.table-head{
+    background-color: var(--color-primario-dark);
+    border: solid var(--color-primario-dark) 4px;
+}
+
+.th-info{
+    cursor: pointer;
+}
+
+.table-tr:hover{
+    font-size: 2rem;
+}
+
+.label{
+    width: 15rem;
+    font-weight: bold;
+}
+
+.table-tr{
+    border: solid var(--color-primario-dark) 4px;
+}
+.table-tr th{
+    padding: 0.5rem;
+}
+.table-head th{
+    padding: 0.5rem;
 }
