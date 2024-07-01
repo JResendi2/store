@@ -1,1 +1,2 @@
-/storage/img-products/.
+/storage/img-products/*.jpg
+.gitignore

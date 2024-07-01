@@ -10,6 +10,8 @@
     const containerNewProduct = document.querySelector("#new-product");
     const containerEditProduct = document.querySelector("#edit-product");
     const form = document.querySelector("#form");
+    const toastHTML = document.querySelector("#toast");
+
     let product_id;
 
     function deleteProduct(e){
@@ -23,7 +25,11 @@
             .then(response => response.json())
             .then(data => {
                 console.log(data);
-                location.reload();
+                const toast = new bootstrap.Toast(toastHTML);
+                toast.show();
+                setTimeout(() => {
+                    location.reload();
+                }, 2000); 
             })
             .catch(error => console.error('Error:', error));
     }
@@ -68,6 +74,10 @@
         })
             .then(response => response.json())
             .then(data => {
+                const toastBody = document.querySelector('#toast .toast-body p');
+                toastBody.textContent = 'Producto actualizado';
+                const toast = new bootstrap.Toast(toastHTML);
+                toast.show();
                 console.log(data);
             })
             .catch(error => console.error('Error:', error));
@@ -89,6 +99,7 @@
             .then(response => response.json())
             .then(data => {
                 console.log(data);
+                location.reload();
             })
             .catch(error => console.error('Error:', error));
         e.preventDefault();

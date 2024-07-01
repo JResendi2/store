@@ -18,9 +18,9 @@ def login_in(request):
             user = authenticate(request, username=username, password=password)
             if user is not None:
                 login(request, user)
-                return redirect('product_index') # Cambia esto a tu URL de éxito
+                return redirect('product_index') 
             else:
-                form.add_error(None, 'Invalid username or password') # Manejo de error de autenticación fallida
+                form.add_error(None, 'Invalid username or password') 
     else:
         form = CustomLoginForm()
     return render(request, 'login-admin/login.html', {'form': form})
@@ -108,12 +108,13 @@ def login_up_client(request):
                 'body': template_login,
                 'session': False
             }
-        template_register = render_to_string('login-client/register.html', {"form": form})
-        
-        datos = {
-            'body': template_register,
-            'session': False
-        }
+        else:
+            template_register = render_to_string('login-client/register.html', {"form": form})
+            
+            datos = {
+                'body': template_register,
+                'session': False
+            }
     else:
         form = CustomUserForm()
         template_register = render_to_string('login-client/register.html', {"form": form})

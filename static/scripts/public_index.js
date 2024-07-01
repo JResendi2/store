@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let btnSaveClient = null;
     const modalRegisterHtml = document.querySelector("#modal-register");
     const modalRegister = new bootstrap.Modal(modalRegisterHtml);
+    const toastHTML = document.querySelector("#toast");
 
     const modalBody = modalRegisterHtml.querySelector(".modal-body");
 
@@ -15,6 +16,8 @@ document.addEventListener("DOMContentLoaded", function () {
             .then(response => response.json())
             .then(data => {
                 if(data.authenticated){
+                    const toast = new bootstrap.Toast(toastHTML);
+                    toast.show();
                     console.log("Tu compra ha sido agregada a tu carrito :)");
                 } else {
                     const token = modalRegisterHtml.querySelector('input[name="csrfmiddlewaretoken"]');
@@ -42,6 +45,8 @@ document.addEventListener("DOMContentLoaded", function () {
             .then(data => {
                 if(data.session === true){
                     modalRegister.hide();
+                    const toast = new bootstrap.Toast(toastHTML);
+                    toast.show();
                     console.log("Tu compra ha sido agregada a tu carrito :)");
                 } else {
                     const token = modalRegisterHtml.querySelector('input[name="csrfmiddlewaretoken"]');
@@ -89,6 +94,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 modalBody.innerHTML = data.body;
                 const form = modalBody.querySelector("form");
                 form.appendChild(token);
+                btnLoginClient = modalBody.querySelector("#btn-login-client");
+                btnLoginClient.addEventListener("click", (e) => loginClient(e));
             })
             .catch(error => console.error('Error:', error));
     }

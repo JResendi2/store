@@ -182,6 +182,10 @@ img{
     margin: 2rem;
 }
 
+.bg-toast{
+    background-color: var(--color-secundario-dark);
+}
+
 @media(min-width: 768px){
     .grid-productos{
         grid-template-columns: 1fr 1fr 1fr ;
