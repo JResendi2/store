@@ -19,6 +19,7 @@ def index(request):
     return render(request, 'product/index.html', {'products': products, "form": form})
 
 @login_required
+@permission_required('products.change_product', login_url='/')
 def create(request):
     if request.method == 'POST':
         form = ProductForm(request.POST, request.FILES)
