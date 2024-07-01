@@ -25,6 +25,8 @@
             .then(response => response.json())
             .then(data => {
                 console.log(data);
+                const toastBody = document.querySelector('#toast .toast-body p');
+                toastBody.textContent = 'Producto eliminado';
                 const toast = new bootstrap.Toast(toastHTML);
                 toast.show();
                 setTimeout(() => {
