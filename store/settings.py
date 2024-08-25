@@ -57,6 +57,8 @@ MIDDLEWARE = [
     "corsheaders.middleware.CorsMiddleware",
 ]
 
+CORS_ALLOW_ALL_ORIGINS = True
+
 # Permitir ciertos métodos HTTP
 CORS_ALLOW_METHODS = [
     "POST",
