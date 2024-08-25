@@ -24,6 +24,7 @@ urlpatterns = [
     path('', include('products.urls')),
     path('login/', include('login.urls')),
     path('logout/', LogoutView.as_view(), name='logout'),
+    path('chatbot/', include('apichatbot.urls')),
 ]
 
 

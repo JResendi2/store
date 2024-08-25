@@ -1,2 +1,3 @@
 /storage/img-products/*.jpg
 .gitignore
+.env

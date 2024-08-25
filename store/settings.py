@@ -40,6 +40,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'products',
     'login',
+    'apichatbot',
+    'rest_framework',
+    'rest_framework_api_key',
 ]
 
 MIDDLEWARE = [
@@ -50,7 +53,22 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "corsheaders.middleware.CorsMiddleware",
 ]
+
+# Permitir ciertos métodos HTTP
+CORS_ALLOW_METHODS = [
+    "POST",
+]
+
+# Permitir ciertos encabezados
+CORS_ALLOW_HEADERS = [
+    "authorization",
+    "content-type",
+]
+
+# Permitir credenciales
+CORS_ALLOW_CREDENTIALS = True
 
 ROOT_URLCONF = 'store.urls'
 
