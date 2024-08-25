@@ -100,11 +100,11 @@ WSGI_APPLICATION = 'store.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME':  "appstore",
-        'USER':  "root",
-        'PASSWORD':  "rootroot",
-        'HOST':  "localhost",
-        'PORT':  "3306",
+        'NAME':  config("DATABASE_NAME"),
+        'USER':  config("DATABASE_USER"),
+        'PASSWORD': config("DATABASE_PASSWORD"),
+        'HOST':  config("DATABASE_HOST"),
+        'PORT':  config("DATABASE_PORT"),
     }
 }
 
